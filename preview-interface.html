@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Dark Interface Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0a;
+            font-family: 'Inter', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            color: #e0e0e0;
+        }
+        
+        .preview-container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .preview-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .preview-title {
+            font-size: 24px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 0 10px 0;
+        }
+        
+        .preview-subtitle {
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+        
+        .preview-code {
+            background-color: rgba(30, 30, 40, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 30px;
+            overflow: auto;
+        }
+        
+        .preview-instructions {
+            background-color: rgba(30, 30, 40, 0.3);
+            border-left: 4px solid #d97706;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .preview-button {
+            display: inline-block;
+            background-color: #0f0f15;
+            color: #d0d0d0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .preview-button:hover {
+            background-color: #1f1f2a;
+            border-color: #d97706;
+            color: white;
+        }
+        
+        .preview-button-primary {
+            background-color: #0c0c14;
+            border-color: rgba(217, 119, 6, 0.3);
+        }
+        
+        .preview-iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            background-color: #0a0a0a;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <div class="preview-header">
+            <h1 class="preview-title">Enhanced Dark Interface Preview</h1>
+            <p class="preview-subtitle">A refined, elegant dark mode interface with interactive particle system</p>
+        </div>
+        
+        <div class="preview-instructions">
+            <p>This file contains the enhanced dark interface React component. To view it in action, you'll need to set up a React development environment.</p>
+        </div>
+        
+        <div class="preview-section">
+            <h2>Setup Instructions</h2>
+            <p>To run this component, you'll need to:</p>
+            <ol>
+                <li>Create a new React app: <code>npx create-react-app dark-interface</code></li>
+                <li>Install required dependencies: <code>npm install lucide-react</code></li>
+                <li>Copy the enhanced-interface-dark.tsx file into your src directory</li>
+                <li>Import and use the component in your App.js</li>
+            </ol>
+            
+            <div class="preview-buttons">
+                <a href="https://codesandbox.io/s/new" target="_blank" class="preview-button preview-button-primary">Open in CodeSandbox</a>
+                <a href="https://github.com/new" target="_blank" class="preview-button">Create GitHub Repository</a>
+            </div>
+        </div>
+        
+        <div class="preview-section">
+            <h2>Preview Image</h2>
+            <p>The interface features a dark theme with amber accents and an interactive particle system:</p>
+            <div style="max-width: 100%; overflow: hidden; border-radius: 8px; margin: 20px 0; position: relative;">
+                <div style="padding-top: 56.25%; background-color: #0c0c10; position: relative; overflow: hidden;">
+                    <!-- Simulated interface image -->
+                    <div style="position: absolute; inset: 0; display: flex; flex-direction: column;">
+                        <!-- Nav -->
+                        <div style="padding: 16px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <div style="color: #d97706; font-weight: 300;">AiON_PROTOCOL</div>
+                            <div style="display: flex; gap: 20px;">
+                                <div style="color: #808080; font-size: 14px;">NETWORK</div>
+                                <div style="color: #808080; font-size: 14px;">PROTOCOL</div>
+                                <div style="color: #808080; font-size: 14px;">AI INTEGRATION</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Center content -->
+                        <div style="flex: 1; display: flex; justify-content: center; align-items: center; position: relative;">
+                            <div style="position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(217, 119, 6, 0.1) 0%, transparent 70%);"></div>
+                            <div style="text-align: center;">
+                                <h1 style="font-size: 42px; font-weight: 200; color: #e5e5e5; margin: 0;">
+                                    <span style="color: #666666;">[</span>
+                                    A<span style="color: #d97706;">i</span>ON
+                                    <span style="color: #666666;">]</span>
+                                </h1>
+                                <div style="width: 100px; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent); margin: 10px auto;"></div>
+                                <p style="color: #808080; font-size: 13px; margin: 0;">DECENTRALIZED RESEARCH COLLECTIVE</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Chat interface -->
+                        <div style="padding: 20px; display: flex; justify-content: center;">
+                            <div style="width: 400px; background-color: rgba(20,20,30,0.5); border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
+                                <div style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); color: #808080; font-size: 13px;">
+                                    SYSTEM.QUERY
+                                </div>
+                                <div style="padding: 14px; display: flex; gap: 8px;">
+                                    <div style="flex: 1; background-color: rgba(0,0,0,0.3); border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); height: 30px;"></div>
+                                    <div style="width: 30px; height: 30px; background-color: rgba(0,0,0,0.3); border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #666666;">→</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Particles simulation -->
+                    <div style="position: absolute; inset: 0; overflow: hidden;">
+                        <div style="width: 100%; height: 100%; background-image: radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.1) 0%, transparent 70%);"></div>
+                        <canvas id="preview-canvas" style="position: absolute; inset: 0; width: 100%; height: 100%;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple particle simulation for preview purposes
+        const canvas = document.getElementById('preview-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width = canvas.width = canvas.offsetWidth;
+        let height = canvas.height = canvas.offsetHeight;
+        
+        window.addEventListener('resize', () => {
+            width = canvas.width = canvas.offsetWidth;
+            height = canvas.height = canvas.offsetHeight;
+        });
+        
+        const particles = [];
+        const particleCount = 50;
+        
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                
+                const rand = Math.random();
+                if (rand > 0.9) {
+                    this.color = 'rgba(217, 119, 6,';
+                } else if (rand > 0.7) {
+                    this.color = 'rgba(200, 160, 80,';
+                } else {
+                    this.color = 'rgba(150, 150, 150,';
+                }
+                
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.x < 0 || this.x > width) this.speedX *= -1;
+                if (this.y < 0 || this.y > height) this.speedY *= -1;
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `${this.color}${this.opacity})`;
+                ctx.fill();
+            }
+        }
+        
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw connections
+            ctx.strokeStyle = 'rgba(217, 119, 6, 0.05)';
+            ctx.lineWidth = 0.5;
+            
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            // Update and draw particles
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+    </script>
+</body>
+</html>
