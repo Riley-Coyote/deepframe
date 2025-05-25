@@ -1,0 +1,38 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+html {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0d0d0d;
+  color: #e6e6e6;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Custom classes for consciousness theme */
+.bg-bg-0 { background: #0d0d0d; }
+.bg-bg-1 { background: #141414; }
+.text-text-primary { color: #e6e6e6; }
+.text-accent-1 { color: #9aeaff; }
+.text-accent-2 { color: #c7b5ff; }
+.text-grid { color: #1a1a1a; }
+.border-grid { border-color: #1a1a1a; }
+
+.animate-consciousness-pulse {
+  animation: consciousness-pulse 3s ease-in-out infinite;
+}
+
+@keyframes consciousness-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
