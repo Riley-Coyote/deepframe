@@ -1,7 +1,7 @@
 import React from 'react';
-import { ShapeProps } from 'tldraw';
+import type { TLShape } from '@tldraw/editor';
 
-export function DeepFramePreviewShape({ shape, meta }: ShapeProps<'iframe'>) {
+export function DeepFramePreviewShape({ shape, meta }: { shape: any; meta: { bounds: { x: number; y: number; width: number; height: number } } }) {
   const html = shape.props.html;
   return (
     <div

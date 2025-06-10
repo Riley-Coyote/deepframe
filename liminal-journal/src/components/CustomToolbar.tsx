@@ -1,8 +1,8 @@
 import React from 'react';
-import { TldrawApp } from 'tldraw';
+import type { Editor } from '@tldraw/editor';
 import { makeReal } from '../utils/makeReal';
 
-export function CustomToolbar({ editor }: { editor: TldrawApp }) {
+export function CustomToolbar({ editor }: { editor: Editor }) {
   return (
     <div className="df-toolbar p-2 bg-white shadow flex space-x-2">
       <button
