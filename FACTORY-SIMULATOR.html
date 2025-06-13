@@ -2129,8 +2129,8 @@ transform: translateX(-50%) translateY(0) scale(1);
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-.settings-panel {
-width: 260px;
+  .settings-panel {
+    width: 260px;
 top: 10px;
 right: 10px;
 }
@@ -2152,10 +2152,23 @@ right: 10px;
 gap: 6px;
 }
 
-button {
-padding: 8px 14px;
-font-size: var(--font-8);
+  button {
+    padding: 8px 14px;
+    font-size: var(--font-8);
+  }
 }
+
+@media (max-width: 480px) {
+  .settings-panel {
+    width: 220px;
+  }
+  button {
+    padding: 6px 10px;
+    font-size: var(--font-9);
+  }
+  .mobile-controls {
+    bottom: 10px;
+  }
 }
 </style>
 </head>
@@ -4490,6 +4503,74 @@ let isChatOpen = false;
 let messageHistory = [];
 let chatParticlesActive = false;
 
+  // =================== AGENT FRAMEWORK ===================
+  class ChatAgent {
+    constructor(name) {
+      this.name = name;
+      this.mood = 'neutral';
+    }
+
+    analyze(text) {
+      const score = getSentimentScore(text);
+      if (score > 0) {
+        this.mood = 'happy';
+      } else if (score < 0) {
+        this.mood = 'angry';
+      } else {
+        this.mood = 'neutral';
+      }
+    }
+  }
+
+  const positiveWords = ['happy','great','love','awesome','good','amazing'];
+  const negativeWords = ['sad','bad','angry','hate','terrible','awful'];
+
+  function getSentimentScore(text) {
+    let score = 0;
+    const words = text.toLowerCase().split(/\W+/);
+    words.forEach(word => {
+      if (positiveWords.includes(word)) score++;
+      if (negativeWords.includes(word)) score--;
+    });
+    return score;
+  }
+
+  const agentFramework = {
+    agents: [new ChatAgent('Resonator')],
+    resonance: 'neutral',
+    updateResonance() {
+      const moodTally = { happy: 0, angry: 0, neutral: 0 };
+      this.agents.forEach(agent => { moodTally[agent.mood]++; });
+      let top = 'neutral';
+      let count = 0;
+      Object.keys(moodTally).forEach(mood => {
+        if (moodTally[mood] > count) { top = mood; count = moodTally[mood]; }
+      });
+      this.resonance = top;
+    },
+    applyResonance() {
+      switch (this.resonance) {
+        case 'happy':
+          setMode('sphere', 'spectrum');
+          settings.movementSpeed = 0.03;
+          break;
+        case 'angry':
+          setMode('ring', 'pulse');
+          settings.movementSpeed = 0.05;
+          break;
+        default:
+          setMode('free', 'default');
+          settings.movementSpeed = 0.01;
+      }
+      updateTargetPositions();
+    },
+    processMessage(text) {
+      this.agents.forEach(agent => agent.analyze(text));
+      this.updateResonance();
+      this.applyResonance();
+    }
+  };
+
 // Open/close chat modal
 function toggleChat() {
 console.log("Chat modal toggle called");
@@ -4585,8 +4666,9 @@ if (!chatInput || !chatInput.value.trim()) return;
 const userMessage = chatInput.value.trim();
 chatInput.value = '';
 
-// Add user message to chat
-addMessage(userMessage, 'user');
+  // Add user message to chat
+  addMessage(userMessage, 'user');
+  agentFramework.processMessage(userMessage);
 
 // Get API key if available
 const apiKey = localStorage.getItem('deepseekApiKey');
@@ -4633,8 +4715,9 @@ throw new Error(`API error: ${response.status}`);
 
 const data = await response.json();
 if (data.choices && data.choices[0] && data.choices[0].message) {
-const reply = data.choices[0].message.content;
-addMessage(reply, 'assistant');
+        const reply = data.choices[0].message.content;
+        addMessage(reply, 'assistant');
+        agentFramework.processMessage(reply);
 } else {
 throw new Error('Invalid response format');
 }
@@ -4661,8 +4744,9 @@ errorMsg = 'Sorry, too many requests. The API rate limit has been exceeded. Plea
 errorMsg = `Sorry, I encountered an error with the DeepSeek API: ${error.message}. Please check your settings and try again.`;
 }
 
-// Show error message
-addMessage(errorMsg, 'assistant');
+  // Show error message
+  addMessage(errorMsg, 'assistant');
+  agentFramework.processMessage(errorMsg);
 }
 } else {
 // Fallback to local simulation
@@ -4696,11 +4780,12 @@ const responses = [
 "You can upload an image to see how particles organize themselves to form complex patterns, similar to how quantum fields interact."
 ];
 
-// Select random response
-const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+  // Select random response
+  const randomResponse = responses[Math.floor(Math.random() * responses.length)];
 
-// Add response to chat
-addMessage(randomResponse, 'assistant');
+  // Add response to chat
+  addMessage(randomResponse, 'assistant');
+  agentFramework.processMessage(randomResponse);
 }, 1500); // 1.5s delay to simulate thinking
 }
 
@@ -4959,6 +5044,25 @@ mobileToggle.classList.toggle('active', mobileMode);
 } catch (e) {
 console.warn("Error handling orientation change:", e);
 }
+});
+
+// Adjust layout on window resize if no preference set
+window.addEventListener('resize', function() {
+  try {
+    const storedPref = localStorage.getItem('quantum-simulator-mobile-mode');
+    if (storedPref === null) {
+      const shouldBeMobile = isMobileDevice();
+      if (shouldBeMobile !== mobileMode) {
+        mobileMode = shouldBeMobile;
+        document.body.classList.toggle('mobile-mode', mobileMode);
+        if (mobileToggle) {
+          mobileToggle.classList.toggle('active', mobileMode);
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('Error handling resize:', e);
+  }
 });
 
 console.log("Mobile optimization setup complete");
